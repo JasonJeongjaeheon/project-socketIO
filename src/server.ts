@@ -27,7 +27,7 @@ const setServer = async(): Promise<void> => {
     handleSocket(io)
     
     httpServer.listen(3000, () => {
-        console.log(`Socket sever listening on 3000`)
+        console.log(`Socket sever is listening on 3000`)
     })
 }
 
