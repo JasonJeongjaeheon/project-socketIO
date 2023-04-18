@@ -22,7 +22,12 @@ const setServer = async(): Promise<void> => {
         })
 
     const httpServer = createServer()
-    const io = new Server(httpServer)
+    const io = new Server(httpServer, {
+        cors: {
+            origin: '*',
+            methods: ["GET", "POST"]
+        }
+    })
         
     handleSocket(io)
     
