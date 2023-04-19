@@ -6,9 +6,10 @@ const handleSocket = (io: any) => {
 
         socket.emit('message', 'Welcome to my chat app!');
         
-        socket.on('chat message', (msg) => {
-            console.log(`${socket.id} chat message:` + msg);
-            io.emit(`${socket.id} chat message:`, msg);
+        socket.on('chat message', (msg, callback) => {
+            console.log(`chat message:` + msg);
+            socket.to(`${socket.id}`).emit('new chat', msg)
+            socket.broadcast.emit('receive message', msg)
           });
         
         socket.on('disconnect', () => {
